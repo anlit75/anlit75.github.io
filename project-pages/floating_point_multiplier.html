@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+    <link rel="icon" href="../assets/images/px.png" />
+    <title>Floating Point Multiplier</title>
+    <meta name="description" content="IEEE754 Floating Point Multiplier">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+
+	<body>
+    <!-- NAVBAR -->
+    <header>
+      <div class="navbar">
+        <a class="nav-title-link" href="../index.html">
+          <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
+          <span class="nav-title">Ting An's Portfolio</span>
+        </a>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Me</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="mailto:611415132@alum.ccu.edu.tw">Contact Me</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+          <!-- 
+            TODO
+
+            - Change the 'main-title' text to the name of your project
+            - Change the 'body-text' text to a short and sweet description of your project (maybe the same as the one on the project card)
+            - Change "desktop.jpeg" to the image filename you uploaded in the assets/images folder.
+          -->
+        <div class="main-title">IEEE Standard 754 Floating Point Numbers Multiplier</div>
+        <div class="body-text">
+          IEEE 754 Floating Point Multiplier是一個基於Verilog的設計，使用有限狀態機結構實現。其主要功能是接收兩個浮點數，將它們相乘，然後輸出IEEE 754格式的乘積浮點表示。這個專案使用了8個不同的狀態，每個狀態負責不同的運算和數據處理任務。
+        </div>
+        <div id="table-of-contents"></div>
+        <!-- <image class="project-header-image" src="../assets/images/fpmul/calculator.jpg"> -->
+      </div>
+
+      <!-- PROJECT DETAILS -->
+      <!-- 
+        TODO
+
+        - Change the 'subheader-text' to whatever header you want for project details
+        - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
+      -->
+      <div id="project-details">
+        <h1 id="section1">Project Details</h1>
+        <hr>
+        <div class="project-details-content">
+          <div class="body-text">
+            IEEE 754 Floating Point Multiplier專案的目標是用Verilog實現一個能夠有效處理浮點數相乘並且可以合成的電路。IEEE 754是一種標準的浮點數表示方式，它包含了三個部分：符號位（sign bit）、指數部分（exponent）、和小數部分（fraction）。我們的設計需要處理這三個部分，並實現浮點乘法的運算。
+          </div>
+          <div class="gallery-image-container">
+            <img src="../assets/images/fpmul/IEEE754.jpg" class="gallery-image">
+            <a href="https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/">
+              <span class="image-caption">IEEE Standard for Floating-Point Arithmetic (IEEE 754)</span>
+            </a>
+          </div>
+
+          <div class="body-text">
+            <h2 id="section3">Specification</h2>
+            <ul>
+              <li>It is <strong>active-high synchronous reset</strong> architecture</li>
+              <li>The rounding mode is <strong>round to nearst</strong></li>
+              <li><strong>You should try to maximize the operation frequency</strong> of this pipeline floating multiplier</li>
+              <li>The output latency after data input should be smaller than <strong>60</strong> clock cycles</li>
+            </ul>
+
+            <h3 id="section4">I/O Defination</h3>
+            <table style="width:100%">
+              <thead>
+                <tr>
+                  <th style="width:20%">Signal Name</th>
+                  <th style="width:10%">Direction</th>
+                  <th style="width:10%">Bit Width</th>
+                  <th style="width:60%">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CLK</td>
+                  <td>Input</td>
+                  <td>1</td>
+                  <td>Clock signal</td>
+                </tr>
+              
+                <tr>
+                  <td>RESET</td>
+                  <td>Input</td>
+                  <td>1</td>
+                  <td>Synchronous reset signal (active high)</td>
+                </tr>
+              
+                <tr>
+                  <td>ENABLE</td>
+                  <td>Input</td>
+                  <td>1</td>
+                  <td>Asserted when input data is vaild</td>
+                </tr>
+              
+                <tr>
+                  <td>DATA_IN</td>
+                  <td>Input</td>
+                  <td>8</td>
+                  <td>The data will input when ENABLE is high</td>
+                </tr>
+              
+                <tr>
+                  <td>DATA_OUT</td>
+                  <td>Output</td>
+                  <td>8</td>
+                  <td>Output data</td>
+                </tr>
+              
+                <tr>
+                  <td>READY</td>
+                  <td>Output</td>
+                  <td>1</td>
+                  <td>Asserted when DATA_OUT is vaild</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2 id="section10">Design</h2>
+            這個專案的核心結構是有限狀態機（finite state machine），它共包含8個不同的狀態，每個狀態都負責不同的任務。<br>
+            以下是每個狀態的主要功能： <br>
+            <ol>
+              <li><strong>Idle</strong>：在閒置狀態下，所有的值都被歸零，準備接收新的輸入。這包括清除暫存器、重置接線、和輸出控制訊號</li>
+              <li><strong>DataIn</strong>：這個狀態用於將輸入的浮點數資料分別存儲至 A 和 B，準備進行後續的運算</li>
+              <li><strong>Unpack</strong>：根據IEEE 754格式，將輸入的浮點數資料拆解為符號位（sign）、指數（exponent）和小數部分（fraction）</li>
+              <li><strong>Mul0</strong>：使用Chip Wise乘法器對A和B的小數部分（fraction）進行乘法運算</li>
+              <li><strong>Mul1</strong>：處理符號位（sign bit）以及對指數（exponent）進行加法運算</li>
+              <li><strong>Norm</strong>：這個狀態負責處理溢位，確保結果在浮點數表示的有效範圍內，同時進行四捨五入運算</li>
+              <li><strong>Pack</strong>：將計算結果分成8組，準備進行後續的輸出</li>
+              <li><strong>Output</strong>在最終的狀態下，將計算結果以IEEE 754浮點表示輸出</li>
+            </ol>
+          </div>
+        </div> 
+      </div>
+
+      <!-- IMAGE GALLERY -->
+      <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <h1 id="section2">Achievements Display</h1>
+        <hr>
+        <div class="project-gallery-content">
+            <!-- 
+              TODO
+
+              This is where the images in the gallery live. Here's a simple gallery image for you to copy:
+
+              Full Width Image:
+
+                <div class="gallery-image-container">
+                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
+                  <span class="image-caption" style="text-align: center; display: block;">
+                    IMAGE_CAPTION
+                  </span>
+                </div>
+
+              Half Width Image: 
+
+                <div class="gallery-image-container half-width">
+                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
+                  <span class="image-caption" style="text-align: center; display: block;">
+                    IMAGE_CAPTION
+                  </span>
+                </div>
+
+              - To add an image to the this area, copy one of the above, paste it below this comment, and change the following:
+                  - IMAGE_NAME: the name of the image file in assets/images
+                  - IMAGE_CAPTION: to the caption of the image
+            -->
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/fpmul/rtl.png" class="gallery-image">
+              <span class="image-caption" style="text-align: center; display: block;">
+                RTL Simulation.
+              </span>
+            </div>
+
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/fpmul/netlist.png" class="gallery-image">
+              <span class="image-caption" style="text-align: center; display: block;">
+                Netlist Simulation.
+              </span>
+            </div>
+
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/fpmul/CHIP.png" class="gallery-image">
+              <span class="image-caption" style="text-align: center; display: block;">
+                CHIP Layout.
+              </span>
+            </div>
+
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/fpmul/power.png" class="gallery-image">
+              <span class="image-caption" style="text-align: center; display: block;">
+                Power Rail Analysis.
+              </span>
+            </div>
+
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/fpmul/powertable.png" class="gallery-image">
+              <span class="image-caption" style="text-align: center; display: block;">
+                Power Rail Analysis.
+              </span>
+            </div>
+
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/fpmul/post.png" class="gallery-image">
+              <span class="image-caption" style="text-align: center; display: block;">
+                Post Layout Simulation.
+              </span>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <div class="scroll-to-top">
+      <a class="back-button" href="#" id="back-to-top-button">
+          <image src="../assets/icons/arrow-up.svg"/>
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- TODO - Change href to your Website  -->
+      <a class="icon-link" target="_blank" href="https://github.com/anlit75.github.io">
+        <image src="../assets/icons/website.png" class="footer-icon"/>
+      </a>
+      <!-- TODO - Change href to your Github account  -->
+      <a class="icon-link" target="_blank" href="https://github.com/anlit75">
+        <image src="../assets/icons/github.png" class="footer-icon"/>
+      </a>
+      <!-- TODO - Change href to your Linkedin account  -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/anlit75">
+        <image src="../assets/icons/linkedin.png" class="footer-icon"/>
+      </a>
+      <!-- TODO - Change the email after "mailto" to your contact email  -->
+      <a class="icon-link" href="mailto:611415132@alum.ccu.edu.tw">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>

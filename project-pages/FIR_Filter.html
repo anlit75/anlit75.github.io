@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    
+    <link rel="icon" href="../assets/images/px.png" />
+    <title>Multi-Bank Filter</title>
+    <meta name="description" content="DIC LAB06 Multi_Bank_Filter">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <header>
+      <div class="navbar">
+        <a class="nav-title-link" href="../index.html">
+          <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
+          <span class="nav-title">Ting An's Portfolio</span>
+        </a>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Me</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="mailto:611415132@alum.ccu.edu.tw">Contact Me</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+          <!-- 
+            TODO
+
+            - Change the 'main-title' text to the name of your project
+            - Change the 'body-text' text to a short and sweet description of your project (maybe the same as the one on the project card)
+            - Change "desktop.jpeg" to the image filename you uploaded in the assets/images folder.
+          -->
+        <div class="main-title">Finite Impulse Response(FIR) Filter</div>
+        <div class="body-text">在線性非時變系統(Linear Time-Invariant, LTI)下實現fixed-point FIR Filter電路，透過組合移位暫存器、乘法器、加法器電路實現一個高通濾波器和一個低通濾波器。</div>
+        <div id="table-of-contents"></div>
+        <!-- <image class="project-header-image" src="../assets/images/desktop.jpeg"> -->
+      </div>
+
+      <!-- PROJECT DETAILS -->
+      <!-- 
+        TODO
+
+        - Change the 'subheader-text' to whatever header you want for project details
+        - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
+      -->
+      <div id="project-details">
+        <h1 id="section1">Project Details</h1>
+        <hr>
+        <div class="project-details-content">
+          <div class="body-text">
+            FIR Filter是一種常見的數位濾波器，用於處理數位信號。它的名稱來自其有限的脈衝響應（Impulse Response），這表示當濾波器受到一個單位的脈衝信號時，它的輸出僅在有限時間內回應，而不是無窮長的時間。<br>
+            
+            <h2 id="section2">Characteristics of FIR Filter</h2>
+            <ol>
+              <li><strong>有限脈衝響應</strong>：當應用一個有限長的脈衝信號時，FIR濾波器的輸出僅依賴於有限數量的輸入值</li>
+              <li><strong>線性</strong>：FIR濾波器是線性的，使其可以將多個FIR濾波器串聯或相加</li>
+              <li><strong>高度彈性</strong>：通過調整FIR濾波器的系數，可以實現不同的濾波效果，如低通、高通、帶通或帶阻</li>
+            </ol>
+
+            <h2 id="section3">Specification</h2>
+            <ul>
+              <li>Includes a <strong>High Pass Filter</strong> and a <strong>Loss Pass Filter</strong></li>
+              <li>Filter architecture consist of shift registers、multipliers、adders</li>
+              <li>Input signal is represented using <strong>fixed-point notation</strong></li>
+              <li>Output signal is <strong>rounding the decimal part</strong> to the nearst integer</li>
+              <li>Ensure that the number of cycles between the first input and first output is <strong>less than 5 clock cycles</strong> </li>
+            </ul>
+
+            <h3 id="section4">I/O Defination</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:20%">Signal Name</th>
+                  <th style="width:10%">Direction</th>
+                  <th style="width:10%">Bit Width</th>
+                  <th style="width:60%">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CLK</td>
+                  <td>Input</td>
+                  <td>1</td>
+                  <td>Clock signal</td>
+                </tr>
+              
+                <tr>
+                  <td>RESET</td>
+                  <td>Input</td>
+                  <td>1</td>
+                  <td>Asynchronous reset signal (active high)</td>
+                </tr>
+              
+                <tr>
+                  <td>IN_VALID</td>
+                  <td>Input</td>
+                  <td>1</td>
+                  <td>Asserted when IN_DATA is vaild</td>
+                </tr>
+              
+                <tr>
+                  <td>IN_DATA</td>
+                  <td>Input</td>
+                  <td>13</td>
+                  <td>Input data (unsigned number, with the most significant 9 bits as the integer and the least significant 4 bits as the decimal)</td>
+                </tr>
+              
+                <tr>
+                  <td>OUT_VALID</td>
+                  <td>Output</td>
+                  <td>1</td>
+                  <td>Asserted when OUT_DATA is vaild</td>
+                </tr>
+              
+                <tr>
+                  <td>X_DATA</td>
+                  <td>Output</td>
+                  <td>13</td>
+                  <td>HPF output data (unsigned integer numbers)</td>
+                </tr>
+              
+                <tr>
+                  <td>Y_DATA</td>
+                  <td>Output</td>
+                  <td>13</td>
+                  <td>LPF output data (unsigned integer numbers)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 id="section5">Filter Coefficients</h3>
+            <table style="width:100%; text-align: center;">
+              <thead>
+                <tr>
+                  <th colspan="4">High-pass filter coefficient</th>
+                  <th colspan="4">Low-pass filter coefficient</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width:12.5%">H(0)</td>
+                  <td style="width:12.5%">0.43750</td>
+                  <td style="width:12.5%">H(6)</td>
+                  <td style="width:12.5%">0.87500</td>
+                  <td style="width:12.5%">L(0)</td>
+                  <td style="width:12.5%">0.84375</td>
+                  <td style="width:12.5%">L(6)</td>
+                  <td style="width:12.5%">0.50000</td>
+                </tr>
+                <tr>
+                  <td style="width:12.5%">H(1)</td>
+                  <td style="width:12.5%">0.12500</td>
+                  <td style="width:12.5%">H(7)</td>
+                  <td style="width:12.5%">0.50000</td>
+                  <td style="width:12.5%">L(1)</td>
+                  <td style="width:12.5%">0.59375</td>
+                  <td style="width:12.5%">L(7)</td>
+                  <td style="width:12.5%">0.59375</td>
+                </tr>
+                <tr>
+                  <td style="width:12.5%">H(2)</td>
+                  <td style="width:12.5%">0.09375</td>
+                  <td style="width:12.5%">H(8)</td>
+                  <td style="width:12.5%">0.96875</td>
+                  <td style="width:12.5%">L(2)</td>
+                  <td style="width:12.5%">0.15625</td>
+                  <td style="width:12.5%">L(8)</td>
+                  <td style="width:12.5%">0.34375</td>
+                </tr>
+                <tr>
+                  <td style="width:12.5%">H(3)</td>
+                  <td style="width:12.5%">0.03125</td>
+                  <td style="width:12.5%">H(9)</td>
+                  <td style="width:12.5%">0.87500</td>
+                  <td style="width:12.5%">L(3)</td>
+                  <td style="width:12.5%">0.28125</td>
+                  <td style="width:12.5%">L(9)</td>
+                  <td style="width:12.5%">0.37500</td>
+                </tr>
+                <tr>
+                  <td style="width:12.5%">H(4)</td>
+                  <td style="width:12.5%">0.50000</td>
+                  <td style="width:12.5%">H(10)</td>
+                  <td style="width:12.5%">0.96875</td>
+                  <td style="width:12.5%">L(4)</td>
+                  <td style="width:12.5%">0.65625</td>
+                  <td style="width:12.5%">L(10)</td>
+                  <td style="width:12.5%">0.50000</td>
+                </tr>
+                <tr>
+                  <td style="width:12.5%">H(5)</td>
+                  <td style="width:12.5%">0.43750</td>
+                  <td style="width:12.5%">H(11)</td>
+                  <td style="width:12.5%">0.53125</td>
+                  <td style="width:12.5%">L(5)</td>
+                  <td style="width:12.5%">0.53125</td>
+                  <td style="width:12.5%">L(11)</td>
+                  <td style="width:12.5%">0.96875</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+
+            <h2 id="section6">General Architecture</h2>
+            FIR濾波器的總體架構可以參考Fig1，架構包括移位暫存器、乘法器和加法器。在本實驗中，輸入訊號使用fixed-point表示法，其中最高有效 9 位是整數部分，且最低有效 4 位是小數部分。濾波器係數可以使用定點表示法表示，最後得到的輸出訊號將小數部分四捨五入到最接近的整數。
+          </div>
+
+          <div class="gallery-image-container">
+            <img src="../assets/images/fir/fir_ar.jpg" class="gallery-image">
+            <a href="https://en.wikipedia.org/wiki/Finite_impulse_response">
+              <span class="image-caption">Fig1. The general architecture of FIR filter</span>
+            </a>
+          </div>
+
+          <!-- <h2 id="section7">Design</h2> -->
+        </div>
+      </div>
+
+      <!-- IMAGE GALLERY -->
+      <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <h1 id="section2">Achievements Display</h1>
+        <hr>
+        <div class="project-gallery-content">
+            <!-- 
+              TODO
+
+              This is where the images in the gallery live. 
+            -->
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/fir/CHIP.png" class="gallery-image">
+              <span class="image-caption" style="text-align: center; display: block;">
+                CHIP Layout.
+              </span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <div class="scroll-to-top">
+      <a class="back-button" href="#" id="back-to-top-button">
+          <image src="../assets/icons/arrow-up.svg"/>
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- TODO - Change href to your Website  -->
+      <a class="icon-link" target="_blank" href="https://github.com/anlit75.github.io">
+        <image src="../assets/icons/website.png" class="footer-icon"/>
+      </a>
+      <!-- TODO - Change href to your Github account  -->
+      <a class="icon-link" target="_blank" href="https://github.com/anlit75">
+        <image src="../assets/icons/github.png" class="footer-icon"/>
+      </a>
+      <!-- TODO - Change href to your Linkedin account  -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/anlit75">
+        <image src="../assets/icons/linkedin.png" class="footer-icon"/>
+      </a>
+      <!-- TODO - Change the email after "mailto" to your contact email  -->
+      <a class="icon-link" href="mailto:611415132@alum.ccu.edu.tw">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>

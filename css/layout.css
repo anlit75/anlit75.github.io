@@ -35,6 +35,7 @@ body {
 #portfolio-header {
   display: flex;
   gap: 20px;
+  padding: 5% 0 5% 0;
   align-items: center;
 }
 
@@ -46,8 +47,12 @@ body {
 }
 
 .portfolio-header-image {
-  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
   height: auto;
+  border-radius: 20px;
 }
 
 #portfolio-header-text-container {
@@ -171,25 +176,77 @@ body {
       height: auto;
     }
 
+    
+    /* Project table of contents */
+
+    #table-of-contents {
+      /* position: fixed; */
+      background-color: transparent;
+      padding: 10px;
+      max-width: 300px;
+      line-height: 2;
+      /* left: 10px;
+      top: 20%;
+      transform: translateY(-50%);
+      z-index: 999; */
+    }
+
+    #table-of-contents a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    
+/* 頁面底部回到頂部按鈕樣式 */
+.scroll-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 80px;
+  display: none;
+}
+
+h1 {
+  margin: 0 0;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #33333326;
+  margin: 0 0;
+}
+
+
+table,
+td {
+  border: 1px solid #333;
+}
+
+thead,
+tfoot {
+  background-color: #333;
+  color: #fff;
+}
+
+
 
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1600px) {
   #main-content {
-    margin: 225px 275px;
+    margin: 150px 275px;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1200px) {
   #main-content {
-    margin: 225px 175px;
+    margin: 150px 175px;
   }
 }
 
 /* Large devices (laptops/desktops, 1000px and below) */
 @media only screen and (max-width: 1000px) {
   #main-content {
-    margin: 225px 75px;
+    margin: 150px 75px;
   }
 }
 
