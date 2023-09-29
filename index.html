@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/utilities.css">
 
 		<script defer src="./js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js"></script>
 	</head>
 
 	<body>
@@ -25,7 +26,7 @@
         </a>
         <ul>
           <li><a href="./index.html">Home</a></li>
-          <li><a href="./about.html">About Me</a></li>
+          <li><a href="./about-page/about.html">About Me</a></li>
           <li><a class="button" id="my-work-link-nav">Projects</a></li>
           <li><a href="mailto:611415132@alum.ccu.edu.tw">Contact Me</a></li>
         </ul>
@@ -51,7 +52,7 @@
         <div id="portfolio-header-text-container">
             <div class="header-text">
               <span class="main-title">嗨, 我是鄭庭安.</span>
-              <div class="body-text">我是一位適應力強且充滿挑戰精神的電機碩二生, 擁有影像處理和數位訊號處理的專業知識以及Verilog、Python、Matlab等程式撰寫經驗, 熟悉RTL到GDS的IC設計流程。且曾在校內工讀中擔任3年領導職務, 培養了良好的團隊協作和抗壓能力。</div>
+              <div class="body-text">我是一位適應力強且充滿挑戰精神的電機碩二生, 擁有影像處理和數位訊號處理的專業知識以及Verilog、Python、MATLAB等程式撰寫經驗, 熟悉RTL到GDS的IC設計流程。且曾在校內工讀中擔任3年領導職務, 培養了良好的團隊協作和抗壓能力。</div>
             </div>
             <a class="button" id="my-work-link">
               <span class="button-text">Check out my projects</span> 
@@ -67,31 +68,33 @@
         - Change the subheader-text to whatever header you want
         - Add paragraphs using the <div class="body-text"></div> elements in the "about-section-content"
       -->
-      <!-- <div id="about-section">
-        <span class="subheader-text" style="margin: 10px 0 0 0;">About Me</span>
+      <div id="about-section">
+        <span class="subheader-text" style="margin: 10px 0 0 0;"><h3>My Skills</h3></span>
         <div class="about-section-content">
-          <div class="body-text" id="markdown-container"></div>
-        </div>
+          <div id="markdown-container1"></div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js"></script> -->
-  
-        <!-- TODO Change markdown file -->
-        <!-- <script>
+          <!-- TODO Change markdown file -->
+          <script>
+            function fetchAndRenderMarkdown(markdownFile, containerId) {
+              const markdownContainer = document.getElementById(containerId);
+              
+              fetch(markdownFile)
+              .then((response) => response.text())
+              .then((markdownText) => {
+                const htmlContent = marked(markdownText);
+                markdownContainer.innerHTML = htmlContent;
+              })
+              .catch((error) => {
+                console.error("Error fetching Markdown file:", error);
+              });
+            }
+
             document.addEventListener("DOMContentLoaded", function () {
-                const markdownContainer = document.getElementById("markdown-container");
-        
-                fetch("aboutme.md")
-                    .then((response) => response.text())
-                    .then((markdownText) => {
-                        const htmlContent = marked(markdownText);
-                        markdownContainer.innerHTML = htmlContent;
-                    })
-                    .catch((error) => {
-                        console.error("Error fetching Markdown file:", error);
-                    });
+              fetchAndRenderMarkdown("./about-page/skills.md", "markdown-container1");
             });
-        </script>
-      </div> -->
+          </script>
+        </div>
+      </div>
 
       <!-- PROJECTS / MY WORK SECTION -->
       <div id="my-work-section">
@@ -154,12 +157,12 @@
           <div class="project-card">
             <img src="./assets/images/verilog.jpg" class="project-image">
             <div class="project-card-text-container">
-              <a class="no-underline" href="https://github.com/anlit75/HDLBits">
+              <a class="no-underline" target="_blank" href="https://github.com/anlit75/HDLBits">
                 <div class="subheader-text project-title">HDLBits Verilog Practice</div>
               </a>
               <div class="body-text project-card-text">在HDLBits網站上練習總計182道Verilog題目，持續提升自己的電路設計技能，並分享我的練習成果和心得在GitHub上。</div>
             </div>
-            <a class="button" href="https://github.com/anlit75/HDLBits">
+            <a class="button" target="_blank" href="https://github.com/anlit75/HDLBits">
               <span class="button-text">Read More</span>
               <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
             </a>
@@ -168,12 +171,12 @@
           <div class="project-card">
             <img src="./assets/images/fpga.png" class="project-image">
             <div class="project-card-text-container">
-              <a class="no-underline" href="https://youtu.be/Ym1fXyiOmzo?si=ik4ff4OY1w8OW4ez">
+              <a class="no-underline" target="_blank" href="https://youtu.be/Ym1fXyiOmzo?si=ik4ff4OY1w8OW4ez">
                 <div class="subheader-text project-title">FPGA簡易版推方塊小遊戲</div>
               </a>
               <div class="body-text project-card-text">使用FPGA(Altera DE2-70)開發版實作簡易版的推方塊小遊戲，並展示實際遊玩的影片在YouTube上。</div>
             </div>
-            <a class="button" href="https://youtu.be/Ym1fXyiOmzo?si=ik4ff4OY1w8OW4ez">
+            <a class="button" target="_blank" href="https://youtu.be/Ym1fXyiOmzo?si=ik4ff4OY1w8OW4ez">
               <span class="button-text">Read More</span>
               <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
             </a>

@@ -1,21 +1,3 @@
-// if (document.getElementById('my-work-link')) {
-//   document.getElementById('my-work-link').addEventListener('click', () => {
-//     document.getElementById('my-work-section').scrollIntoView({behavior: "smooth"})
-//   })
-// }
-
-// if (document.getElementById('my-work-link-nav')) {
-//   document.getElementById('my-work-link-nav').addEventListener('click', () => {
-//     document.getElementById('my-work-section').scrollIntoView({behavior: "smooth"})
-//   })
-// }
-
-// if (document.getElementById('about-link')) {
-//   document.getElementById('about-link').addEventListener('click', () => {
-//     document.getElementById('about-section').scrollIntoView({behavior: "smooth"})
-//   })
-// }
-
 function scrollToSection(sectionId) {
   const section = document.getElementById(sectionId);
   if (section) {
@@ -92,10 +74,3 @@ document.querySelector("#back-to-top-button").addEventListener("click", function
 //   .catch((error) => {
 //     console.error("Error fetching Markdown file:", error);
 //   });
-
-
-
-
-
-
-
