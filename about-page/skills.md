@@ -1,4 +1,8 @@
 <style>
+table {
+    width: 100%;
+}
+
 table th:first-of-type {
     width: 25%;
 }
@@ -48,7 +52,7 @@ table th:nth-of-type(4) {
         <td>
             <ul>
             <li>數位積體電路設計</li>
-            <li>生醫訊號處理</li>
+            <li>數位訊號處理</li>
             <li>影像處理</li>
             <li>人工智慧</li>
             </ul>

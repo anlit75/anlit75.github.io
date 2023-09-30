@@ -24,6 +24,12 @@ a.icon-link:hover {
 }
 
 
+/* Iframe */
+
+iframe {
+  border: none;
+}
+
 /* Navbar Styling */
 
 .navbar {
