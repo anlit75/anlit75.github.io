@@ -4,26 +4,30 @@ table {
 }
 
 table th:first-of-type {
-    width: 25%;
+    width: 20%;
 }
 table th:nth-of-type(2) {
-    width: 25%;
+    width: 20%;
 }
 table th:nth-of-type(3) {
-    width: 25%;
+    width: 20%;
 }
 table th:nth-of-type(4) {
-    width: 25%;
+    width: 20%;
+}
+table th:nth-of-type(5) {
+    width: 20%;
 }
 </style>
 
 <table>
     <thead>
         <tr>
-        <th style="width:25%">程式語言</th>
-        <th style="width:25%">EDA Tools</th>
-        <th style="width:25%">專業科目</th>
-        <th style="width:25%">語言</th>
+        <th style="width:20%">程式語言</th>
+        <th style="width:20%">EDA Tools</th>
+        <th style="width:20%">Open EDA Tools</th>
+        <th style="width:20%">專業科目</th>
+        <th style="width:20%">語言</th>
         </tr>
     </thead>
     <tbody>
@@ -43,15 +47,22 @@ table th:nth-of-type(4) {
             <li>Genus</li>
             <li>Innovus</li>
             <li>Calibre</li>
-            <li>EDA Playground</li>
+            </ul>
+        </td>
+        <td>
+            <ul>
             <li>Icarus Verilog</li>
             <li>GTKWave</li>
+            <li>Yosys</li>
+            <li>magic</li>
             <li>OpenLANE</li>
+            <li>EDA Playground</li>
             </ul>
         </td>
         <td>
             <ul>
             <li>數位積體電路設計</li>
+            <li>計算機組織</li>
             <li>數位訊號處理</li>
             <li>影像處理</li>
             <li>人工智慧</li>
