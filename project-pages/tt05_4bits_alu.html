@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    
+    <link rel="icon" href="../assets/images/px.png" />
+    <title>Project</title>
+    <meta name="description" content="Project description.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <header>
+      <div class="navbar">
+        <a class="nav-title-link" href="../index.html">
+          <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
+          <span class="nav-title">Ting An's Portfolio</span>
+        </a>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about-page/about.html">About Me</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="mailto:611415132@alum.ccu.edu.tw">Contact Me</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+          <!-- 
+            TODO
+
+            - Change the 'main-title' text to the name of your project
+            - Change the 'body-text' text to a short and sweet description of your project (maybe the same as the one on the project card)
+            - Change "desktop.jpeg" to the image filename you uploaded in the assets/images folder.
+          -->
+        <div class="main-title">Tint Tapeout 5 - 4bits ALU</div>
+        <div class="body-text">This 4-bit ALU (Arithmetic Logic Unit) is a digital computation unit capable of executing 16 different operations.</div>
+        <div id="table-of-contents"></div>
+        <!-- <image class="project-header-image" src="../assets/images/desktop.jpeg"> -->
+      </div>
+
+      <!-- PROJECT DETAILS -->
+      <!-- 
+        TODO
+
+        - Change the 'subheader-text' to whatever header you want for project details
+        - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
+      -->
+      <div id="project-details">
+        <h1 id="section1">Project Details</h1>
+        <hr>
+        <div class="project-details-content">
+          <div class="body-text">
+            The 4-bits ALU (Arithmetic Logic Unit) implemented in this project performs 
+            16 different operations on two 4-bit input values, A and B. 
+
+            These operations include <strong>addition, subtraction, multiplication, division, 
+            bitwise operations, logical shifts, 2's complement, equality comparison, 
+            and greater-than comparison</strong>.
+
+            <h2 id="section2">Specification</h2>
+            <ul>
+              <li>Includes a <strong>High Pass Filter</strong> and a <strong>Loss Pass Filter</strong></li>
+              <li>Filter architecture consist of shift registers、multipliers、adders</li>
+              <li>Input signal is represented using <strong>fixed-point notation</strong></li>
+              <li>Output signal is <strong>rounding the decimal part</strong> to the nearst integer</li>
+              <li>Ensure that the number of cycles between the first input and first output is <strong>less than 5 clock cycles</strong> </li>
+            </ul>
+
+            <h3 id="section3">I/O Defination</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:20%">Signal Name</th>
+                  <th style="width:10%">Direction</th>
+                  <th style="width:10%">Bit Width</th>
+                  <th style="width:60%">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CLK</td>
+                  <td>Input</td>
+                  <td>1</td>
+                  <td>Clock signal</td>
+                </tr>
+              
+                <tr>
+                  <td>RESET</td>
+                  <td>Input</td>
+                  <td>1</td>
+                  <td>Asynchronous reset signal (active high)</td>
+                </tr>
+              
+                <tr>
+                  <td>IN_VALID</td>
+                  <td>Input</td>
+                  <td>1</td>
+                  <td>Asserted when IN_DATA is vaild</td>
+                </tr>
+              
+                <tr>
+                  <td>IN_DATA</td>
+                  <td>Input</td>
+                  <td>13</td>
+                  <td>Input data (unsigned number, with the most significant 9 bits as the integer and the least significant 4 bits as the decimal)</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE GALLERY -->
+      <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <h1 id="section2">Achievements Display</h1>
+        <hr>
+        <div class="project-gallery-content">
+            <!-- 
+              TODO
+
+              This is where the images in the gallery live. Here's a simple gallery image for you to copy:
+
+              Full Width Image:
+
+                <div class="gallery-image-container">
+                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
+                  <span class="image-caption" style="text-align: center; display: block;">
+                    IMAGE_CAPTION
+                  </span>
+                </div>
+
+              Half Width Image: 
+
+                <div class="gallery-image-container half-width">
+                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
+                  <span class="image-caption" style="text-align: center; display: block;">
+                    IMAGE_CAPTION
+                  </span>
+                </div>
+
+              - To add an image to the this area, copy one of the above, paste it below this comment, and change the following:
+                  - IMAGE_NAME: the name of the image file in assets/images
+                  - IMAGE_CAPTION: to the caption of the image
+            -->
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/code.jpeg" class="gallery-image">
+              <span class="image-caption" style="text-align: center; display: block;">
+                Give your image a caption. People love context.
+              </span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <div class="scroll-to-top">
+      <a class="back-button" href="#" id="back-to-top-button">
+          <image src="../assets/icons/arrow-up.svg"/>
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- TODO - Change href to your Website  -->
+      <a class="icon-link" target="_blank" href="https://anlit75.github.io">
+        <image src="../assets/icons/website.png" class="footer-icon"/>
+      </a>
+      <!-- TODO - Change href to your Github account  -->
+      <a class="icon-link" target="_blank" href="https://github.com/anlit75">
+        <image src="../assets/icons/github.png" class="footer-icon"/>
+      </a>
+      <!-- TODO - Change href to your Linkedin account  -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/anlit75">
+        <image src="../assets/icons/linkedin.png" class="footer-icon"/>
+      </a>
+      <!-- TODO - Change the email after "mailto" to your contact email  -->
+      <a class="icon-link" href="mailto:611415132@alum.ccu.edu.tw">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>
