@@ -43,7 +43,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  flex-basis: 50%;
+  flex-basis: 45%;
 }
 
 .portfolio-header-image {
@@ -59,7 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 34px;
-  flex-basis: 50%;
+  flex-basis: 60%;
 }
 
 
@@ -252,7 +252,7 @@ thead, tfoot {
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1600px) {
   #main-content {
-    margin: 150px 275px;
+    margin: 150px 220px;
   }
 }
 
