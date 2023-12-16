@@ -1,6 +1,7 @@
 <style>
 table {
     width: 100%;
+    line-height: 1.5;
 }
 
 table th:first-of-type {
@@ -20,10 +21,10 @@ table th:nth-of-type(4) {
 <table>
     <thead>
         <tr>
-        <th style="width:25%">程式語言</th>
+        <th style="width:25%">Programming</th>
         <th style="width:25%">EDA Tools</th>
-        <th style="width:25%">專業科目</th>
-        <th style="width:25%">語言</th>
+        <th style="width:25%">Expertise</th>
+        <th style="width:25%">Language</th>
         </tr>
     </thead>
     <tbody>
@@ -32,7 +33,10 @@ table th:nth-of-type(4) {
             <ul>
             <li>Verilog</li>
             <li>SystemVerilog</li>
+            <li>UVM</li>
             <li>Python</li>
+            <li>TCL</li>
+            <li>HSPICE</li>
             <li>MATLAB</li>
             </ul>
         </td>
@@ -43,21 +47,17 @@ table th:nth-of-type(4) {
             <li>Genus</li>
             <li>Innovus</li>
             <li>Calibre</li>
-            <li>Icarus Verilog</li>
-            <li>GTKWave</li>
-            <li>Yosys</li>
-            <li>magic</li>
-            <li>OpenLANE</li>
-            <li>EDA Playground</li>
+            <li>Virtuoso</li>
+            <li>Questa Sim</li>
             </ul>
         </td>
         <td>
             <ul>
-            <li>數位積體電路設計</li>
-            <li>計算機組織</li>
-            <li>數位訊號處理</li>
-            <li>影像處理</li>
-            <li>人工智慧</li>
+            <li>Digital IC Design</li>
+            <li>Computer Architecture</li>
+            <li>Digital Signal Processing</li>
+            <li>Digital Image Processing</li>
+            <li>Aritificial Intelligence</li>
             </ul>
         </td>
         <td>

@@ -1,22 +1,24 @@
-### 數位訊號處理實驗-教學助理
-#### 中正大學電機研究所
+### Digital Signal Processing Experiment Teaching Assistant
+#### National Chung Cheng University, Electrical Engineering
 
-2023年2月 - 2023年6月・5 個月
-- 使用自製簡報教授DSP相關的基礎應用，並使用Matlab進行實作
-- 實作內容包含Synthesis of Sinusoidal Signals、Frequency Response、Filter Bank、IIR/FIR Filter etc.
+Feb. 2023 - Jun. 2023・5 months
+- Instructed students in fundamental applications of DSP, and use MATLAB for implementation.
+- Covered topics such as Synthesis of Signals, Frequency Response, Filter Bank, and IIR/FIR Filter.
 ---
 
-### 系統軟體實習(LabView)-教學助理
-#### 東海大學電機系
+### Software Lab for System (LabView) Teaching Assistant
+#### Tunghai University, Electrical Engineering
 
-2021年9月 - 2022年1月・5 個月
-- 協助授課教授完成授課內容的編排，並以FSM概念改寫複雜難懂的貪吃蛇遊戲範例程式，提高學生理解的效率
-- 引導理解速度較慢的學生解題方向，並針對不同學生的程式分別給予撰寫建議
+Sep. 2022 - Jan. 2023・5 months
+- Assisted professor in structuring course content and designing LabView assignments.
+- Rewrote a complex Snake game example using FSM concepts to improve student comprehension efficiency. 
+- Guided slower learners in problem-solving and offered personalized coding suggestions.
 ---
 
-### 勞作教育小組長
-#### 東海大學勞作教育處
+### Labor Education Team Leader
+#### THU Labor Education Office
 
-2018年12月 - 2021年10月・2 年 11 個月
-- 總計帶領420位來自全校不同科系的同學進行多層樓宿舍區域環境維護，並獲得優秀小組長獎
-- 協助勞作教育處培養出4位具備跨系溝通協作、抗壓性高且善於發現細節的小組長
+Dec. 2018 - Oct. 2021・2 years 11 months
+- Led 420 students across multiple departments in maintaining campus environment.
+- Recieved the Outstanding Team Leader Award for leadership excellence.
+- Mentored and developed 4 team leaders cooperated with the Labor Education Office.
